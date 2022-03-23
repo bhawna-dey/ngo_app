@@ -3,14 +3,25 @@ import {Routes, Route} from 'react-router-dom';
 
 import './App.css';
 import Home from './components/pages/Home';
-import Navbar from './components/Navbar';
+import Donate from './components/pages/Donate';
+import Books from './components/pages/Books';
+import Medicine from './components/pages/Medicine';
+import Cloths from './components/pages/Cloths';
+import Amount from './components/pages/Amount';
+
+
+
 
 function App() {
   return (
     <>
-      <Navbar/>
       <Routes>
         <Route path='/' exact element={<Home />} />
+        <Route path='/donate' exact element={<Donate />} />
+        <Route path='/donatebook' exact element={<Books />} />
+        <Route path='/donatemedicine' exact element={<Medicine />} />
+        <Route path='/donatecloths' exact element={<Cloths />} />
+        <Route path='/donateamount' exact element={<Amount />} />
       </Routes>
     </>
   );

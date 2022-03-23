@@ -43,19 +43,14 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    {/* <li className='nav-item'>
-                        <Link to='/userprofile' className='nav-links' onClick={closeMobileMenu}>
-                            Profile
-                        </Link>
-                    </li> */}
                     <li className='nav-item'>
                         <Link to='/help' className='nav-links' onClick={closeMobileMenu}>
                             Help Us
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/signup' className='nav-links' onClick={closeMobileMenu}>
-                            Sign Up
+                        <Link to='/userprofile' className='nav-links' onClick={closeMobileMenu}>
+                            Profile
                         </Link>
                     </li>
                 </ul>
