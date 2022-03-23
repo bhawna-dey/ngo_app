@@ -9,6 +9,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../Navbar";
 
@@ -18,6 +19,8 @@ const UserProfile = () => {
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [about, setAbout] = useState("");
+
+  const navigate = useNavigate();
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -54,6 +57,9 @@ const UserProfile = () => {
         alert("Data Upload success");
       })
       .catch((err) => alert("Data Upload Error"));
+
+      navigate('/');
+
     };
 
 
