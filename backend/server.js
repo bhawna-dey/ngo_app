@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const axios=require('axios');
 
 const cors = require("cors");
 const mongoose=require('mongoose');
@@ -14,6 +15,8 @@ const bookRoutes=require("./routes/book.routes");
 const medicineRoutes=require("./routes/medicine.routes");
 const clothsRoutes=require("./routes/cloths.routes");
 const amountRoutes=require("./routes/amount.routes");
+const profileRoutes=require("./routes/profile.routes");
+
 
 
 
@@ -31,6 +34,21 @@ app.use('/api/donatebook', bookRoutes);
 app.use('/api/donatecloths', clothsRoutes);
 app.use('/api/donatemedicine', medicineRoutes);
 app.use('/api/donateamount', amountRoutes);
+app.use('/', profileRoutes);
+
+app.post('/api/userprofile',(req,res)=>{
+    console.log(req.body);
+    return res.json({message:"added successfully"})   
+});
+
+const getData = () => {
+    axios.get('http://localhost:5000/api/userprofile')
+    .then(response =>{
+        console.log(response);
+    });
+};
+    
+
 
 
 

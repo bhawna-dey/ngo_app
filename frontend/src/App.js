@@ -8,6 +8,8 @@ import Books from './components/pages/Books';
 import Medicine from './components/pages/Medicine';
 import Cloths from './components/pages/Cloths';
 import Amount from './components/pages/Amount';
+import UserProfile from './components/pages/UserProfile';
+
 
 
 
@@ -22,6 +24,8 @@ function App() {
         <Route path='/donatemedicine' exact element={<Medicine />} />
         <Route path='/donatecloths' exact element={<Cloths />} />
         <Route path='/donateamount' exact element={<Amount />} />
+
+        <Route path='/userprofile' exact element={<UserProfile />} />
       </Routes>
     </>
   );
