@@ -11,9 +11,6 @@ import Amount from './components/pages/Amount';
 import UserProfile from './components/pages/UserProfile';
 
 
-
-
-
 function App() {
   return (
     <>

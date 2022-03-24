@@ -34,24 +34,7 @@ app.use('/api/donatebook', bookRoutes);
 app.use('/api/donatecloths', clothsRoutes);
 app.use('/api/donatemedicine', medicineRoutes);
 app.use('/api/donateamount', amountRoutes);
-app.use('/', profileRoutes);
-
-app.post('/api/userprofile',(req,res)=>{
-    console.log(req.body);
-    return res.json({message:"added successfully"})   
-});
-
-const getData = () => {
-    axios.get('http://localhost:5000/api/userprofile')
-    .then(response =>{
-        console.log(response);
-    });
-};
-    
-
-
-
-
+app.use('/api/userprofile', profileRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

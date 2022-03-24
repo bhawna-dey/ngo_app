@@ -37,7 +37,6 @@ const UserProfile = () => {
       reader.readAsDataURL(imgPath);
   }
 }
-  
   const handleSubmit = async(e) => {
     e.preventDefault();
     const formData={
