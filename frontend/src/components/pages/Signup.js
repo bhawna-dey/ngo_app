@@ -19,7 +19,7 @@ function Signup() {
     console.log('Login Success:', res.profileObj);
     axios({
       method:"POST",
-      url: "http://localhost:5000/api/googlelogin",
+      url: "http://localhost:5000/api/auth/login",
       data:{tokenId : res.tokenId}
     }).then(res =>{
       console.log("google login success",res);
@@ -49,7 +49,7 @@ function Signup() {
         onFailure={onLoginFailure}
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
-        onClick={()=>navigate("/")}
+        onClick={()=>navigate("/userprofile")}
       />
       : null}
 

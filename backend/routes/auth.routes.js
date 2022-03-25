@@ -3,6 +3,6 @@ const router=express.Router();
 
 const AuthController=require("../controllers/auth.controller");
 
-router.post('/', AuthController.googlelogin);
+router.post('/login', AuthController.login);
 
 module.exports=router;

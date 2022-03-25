@@ -1,12 +1,9 @@
-const BookDonate=require('../models/BookDonate');
+
+const AddBook=require('../services/book.service')
 
 
 exports.addBookDonate= async function(req, res){
-		console.log("Book donate schema",BookDonate);
-		const book=new BookDonate(req.body);
-		book.save();
-		res.send({ message: "Book added successfully", book });
-
-
+	const data=await AddBook.addBook(req);
+    return (res.json(data));
 };
 

@@ -10,7 +10,6 @@ const mongoose=require('mongoose');
 const dbconnection = require("./db");
 
 const authRoutes=require("./routes/auth.routes");
-const userRoutes=require("./routes/user.routes");
 const bookRoutes=require("./routes/book.routes");
 const medicineRoutes=require("./routes/medicine.routes");
 const clothsRoutes=require("./routes/cloths.routes");
@@ -28,8 +27,7 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use('/api/googlelogin', authRoutes);
-app.use('/api/userprofile', userRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/donatebook', bookRoutes);
 app.use('/api/donatecloths', clothsRoutes);
 app.use('/api/donatemedicine', medicineRoutes);

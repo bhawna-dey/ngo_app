@@ -2,14 +2,13 @@ const User= require('../models/User');
 const {OAuth2Client}=require('google-auth-library');
 const jwt=require('jsonwebtoken');
 
-const client= new OAuth2Client("974608915235-h7p952nn9f000mjmgkud83qv7nm9681c.apps.googleusercontent.com");
+const client= new OAuth2Client(process.env.CLIENT_ID);
 
-const JWTPRIVATEKEY="vcjGffhjsfjUO$%fk&hjdjknlkkrr";
 
-exports.googlelogin=async function(req, res){
+exports.login=async function(req, res){
     const {tokenId}= req.body;
 
-    client.verifyIdToken({idToken: tokenId, audience: "974608915235-h7p952nn9f000mjmgkud83qv7nm9681c.apps.googleusercontent.com"})
+    client.verifyIdToken({idToken: tokenId, audience: process.env.CLIENT_ID})
     .then(response=>{
         const {email_verified, name, email}= response.payload;
         if(email_verified){
@@ -20,7 +19,7 @@ exports.googlelogin=async function(req, res){
                     })
                 }else{
                     if(user){
-                        const token=jwt.sign({_id:user._id}, JWTPRIVATEKEY, {expiresIn: '7d'});
+                        const token=jwt.sign({_id:user._id}, process.env.JWTPRIVATEKEY, {expiresIn: process.env.expiresIn});
                         const{_id,name,email}=user;
 
                         res.json({
@@ -28,15 +27,14 @@ exports.googlelogin=async function(req, res){
                             user:{_id,name,email}
                         })
                     }else{
-                        let password = email+JWTPRIVATEKEY;
-                        let newUser=new User({name,email,password});
+                        let newUser=new User({name,email});
                         newUser.save((err,data)=>{
                             if(err){
                                 return res.status(400).json({
                                     error:"Something went wrong !"
                                 })
                             }
-                        const token=jwt.sign({_id:data._id}, JWTPRIVATEKEY, {expiresIn: '7d'});
+                        const token=jwt.sign({_id:data._id}, process.env.JWTPRIVATEKEY, {expiresIn: '7d'});
                         const{_id,name,email}=newUser;
 
                         res.json({
